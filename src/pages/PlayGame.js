@@ -1,13 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import images from "../images";
 import Modal from "../Modal";
-
+import useAuth from "../hooks/useAuth";
 function PlayGame() {
   let location = useLocation();
   let username = location.state?.username;
+  let navigate = useNavigate();
   const initialScore = Number(window.localStorage.getItem("score") || 0);
 
   const [showModal, setShowModal] = useState();
@@ -15,10 +16,25 @@ function PlayGame() {
   const [playerChoice, setPlayerChoice] = useState();
   const [computerChoice, setComputerChoice] = useState();
   const [result, setResult] = useState();
+  const { setToken } = useAuth();
+
+  useEffect(() => {
+    let tok = localStorage.getItem("token");
+    if (tok) {
+      setToken(tok);
+    } else {
+      navigate("/login", {
+        state: {
+          success: "You need to be logged in to play the game",
+        },
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (username) {
       toast.success(`Welcome back ${username}`);
+      navigate("/game", { state: undefined });
     }
   }, []);
   useEffect(() => {
@@ -127,7 +143,7 @@ function PlayGame() {
               />
             </div>
           </div>
-          <div className="mt-8 sm:mt-0 sm:mr-8 flex justify-center sm:justify-end">
+          <div className="mb-20 sm:mt-0 sm:mr-8 flex justify-center sm:justify-end">
             <button
               onClick={() => {
                 setShowModal(true);

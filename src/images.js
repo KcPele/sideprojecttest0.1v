@@ -6,7 +6,8 @@ import rock from './assets/icon-rock.svg'
 import scissors from './assets/icon-scissors.svg'
 import rules from './assets/image-rules.svg'
 import logo from './assets/logo.svg'
-
+import nav from './assets/nav.png'
+import desktop from './assets/desktop.png'
 const images = {
     triangle,
     circle,
@@ -15,7 +16,9 @@ const images = {
     rock,
     scissors,
     rules,
-    logo
+    logo,
+    nav,
+    desktop,
 }
 
 export default images
