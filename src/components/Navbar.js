@@ -63,7 +63,7 @@ const Navbar = () => {
                   }}
                   className="inline-block max-w-xs bg-white w-full px-4 py-2 text-center  rounded-md shadow"
                 >
-                  login
+                  Logout
                 </button>
               ) : (
                 <Link
