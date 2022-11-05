@@ -8,7 +8,7 @@ const Login = () => {
   let success = location.state?.success;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const { handleAuthLogin } = useAuth();
   let navigate = useNavigate();
 
@@ -27,13 +27,13 @@ const Login = () => {
           username,
         },
       });
-      setError("");
+      // setError("");
       setUsername("");
       setPassword("");
     } else {
       console.log(res.error);
       toast.error(res.error);
-      setError(res.error);
+      // setError(res.error);
     }
   };
   return (

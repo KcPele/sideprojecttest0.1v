@@ -11,12 +11,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 
 function ErrorFallback({ error }) {
-  return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre style={{ color: "red" }}>{error.message}</pre>
-    </div>
-  );
+  return <ErrorPage error={error} />;
 }
 
 const App = () => {

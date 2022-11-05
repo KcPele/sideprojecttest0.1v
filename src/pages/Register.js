@@ -7,14 +7,14 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const { handleAuthRegister } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
-      setError("error");
+      // setError("error");
     } else {
       toast.loading();
       await handleAuthRegister(username, password);
